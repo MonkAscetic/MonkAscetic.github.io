@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="monk, ascetic">
+  <meta name="keywords" content="mybatis,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="满堂花醉三千客，一剑霜寒十四州">
-<meta name="keywords" content="ascetic,monk">
-<meta property="og:type" content="website">
-<meta property="og:title" content="monk">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="泛型TypeHandler的使用在上一篇博客中讲述了,TypeHandler的基本使用。但是对于某些结构对应多种类型。例如数据库字段为json结构，映射对象字段为自定义类型，那么难道到每种类型都要分别做处理吗？接下里稍作改造typeHandler，就可以完美适配。 1、将TypeHandler改为泛型的TypeHandler1JsonbTypeHandler&amp;lt;T&amp;gt; extends Ba">
+<meta name="keywords" content="mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义泛型TypeHandler的使用">
+<meta property="og:url" content="http://yoursite.com/2019/01/24/自定义泛型TypeHandler的使用/index.html">
 <meta property="og:site_name" content="monk">
-<meta property="og:description" content="满堂花醉三千客，一剑霜寒十四州">
+<meta property="og:description" content="泛型TypeHandler的使用在上一篇博客中讲述了,TypeHandler的基本使用。但是对于某些结构对应多种类型。例如数据库字段为json结构，映射对象字段为自定义类型，那么难道到每种类型都要分别做处理吗？接下里稍作改造typeHandler，就可以完美适配。 1、将TypeHandler改为泛型的TypeHandler1JsonbTypeHandler&amp;lt;T&amp;gt; extends Ba">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-24T08:07:39.250Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="monk">
-<meta name="twitter:description" content="满堂花醉三千客，一剑霜寒十四州">
+<meta name="twitter:title" content="自定义泛型TypeHandler的使用">
+<meta name="twitter:description" content="泛型TypeHandler的使用在上一篇博客中讲述了,TypeHandler的基本使用。但是对于某些结构对应多种类型。例如数据库字段为json结构，映射对象字段为自定义类型，那么难道到每种类型都要分别做处理吗？接下里稍作改造typeHandler，就可以完美适配。 1、将TypeHandler改为泛型的TypeHandler1JsonbTypeHandler&amp;lt;T&amp;gt; extends Ba">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/24/自定义泛型TypeHandler的使用/">
 
 
 
 
 
-  <title>monk</title>
+  <title>自定义泛型TypeHandler的使用 | monk</title>
   
 
 
@@ -144,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -238,9 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/24/自定义泛型TypeHandler的使用/" itemprop="url">自定义泛型TypeHandler的使用</a></h1>
+          <h1 class="post-title" itemprop="name headline">自定义泛型TypeHandler的使用</h1>
         
 
         <div class="post-meta">
@@ -344,16 +342,12 @@
       
 
       
-        
-          
-            <h2 id="泛型TypeHandler的使用"><a href="#泛型TypeHandler的使用" class="headerlink" title="泛型TypeHandler的使用"></a>泛型TypeHandler的使用</h2><p>在上一篇博客中讲述了,TypeHandler的基本使用。但是对于某些结构对应多种类型。例如数据库字段为json结构，映射对象字段为自定义类型，那么难道到每种类型都要分别做处理吗？接下里稍作改造typeHandler，就可以完美适配。</p>
+        <h2 id="泛型TypeHandler的使用"><a href="#泛型TypeHandler的使用" class="headerlink" title="泛型TypeHandler的使用"></a>泛型TypeHandler的使用</h2><p>在上一篇博客中讲述了,TypeHandler的基本使用。但是对于某些结构对应多种类型。例如数据库字段为json结构，映射对象字段为自定义类型，那么难道到每种类型都要分别做处理吗？接下里稍作改造typeHandler，就可以完美适配。</p>
 <h3 id="1、将TypeHandler改为泛型的TypeHandler"><a href="#1、将TypeHandler改为泛型的TypeHandler" class="headerlink" title="1、将TypeHandler改为泛型的TypeHandler"></a>1、将TypeHandler改为泛型的TypeHandler</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JsonbTypeHandler&lt;T&gt; extends BaseTypeHandler&lt;T&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="2、给该类添加参数type并添加构造函数"><a href="#2、给该类添加参数type并添加构造函数" class="headerlink" title="2、给该类添加参数type并添加构造函数"></a>2、给该类添加参数type并添加构造函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private Class&lt;T&gt; <span class="built_in">type</span>;</span><br><span class="line"></span><br><span class="line">public JsonbTypeHandler(Class&lt;T&gt; <span class="built_in">type</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">type</span> == null) throw new IllegalArgumentException(<span class="string">"Type argument cannot be null"</span>);</span><br><span class="line">        this.type = <span class="built_in">type</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="3、添加映射类型"><a href="#3、添加映射类型" class="headerlink" title="3、添加映射类型"></a>3、添加映射类型</h3><p>每次添加需要映射的类型，只要在@MappedTypes注解中添加需要映射的类型就可以了</p>
 <p>完整的带泛型的TypeHandler代码如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">@MappedJdbcTypes(value = &#123;JdbcType.OTHER&#125;, includeNullJdbcType = <span class="literal">true</span>)</span><br><span class="line">@MappedTypes(&#123; A.class , B[].class&#125;)</span><br><span class="line">public class JsonbTypeHandler&lt;T&gt; extends BaseTypeHandler&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private Logger logger = LoggerFactory.getLogger(getClass());</span><br><span class="line"></span><br><span class="line">    private ObjectMapper objectMapper = new ObjectMapper();</span><br><span class="line"></span><br><span class="line">    private Class&lt;T&gt; <span class="built_in">type</span>;</span><br><span class="line"></span><br><span class="line">    public JsonbTypeHandler(Class&lt;T&gt; <span class="built_in">type</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">type</span> == null) throw new IllegalArgumentException(<span class="string">"Type argument cannot be null"</span>);</span><br><span class="line">        this.type = <span class="built_in">type</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 设置非空参数</span><br><span class="line">     *</span><br><span class="line">     * @param ps             PreparedStatement</span><br><span class="line">     * @param parameterIndex 参数</span><br><span class="line">     * @param parameter      参数数组</span><br><span class="line">     * @param jdbcType       jdbcType</span><br><span class="line">     * @throws SQLException</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void setNonNullParameter(PreparedStatement ps, int parameterIndex, T parameter, JdbcType jdbcType)</span><br><span class="line">            throws SQLException &#123;</span><br><span class="line">        String jsonText;</span><br><span class="line">        try &#123;</span><br><span class="line">            jsonText = objectMapper.writeValueAsString(parameter);</span><br><span class="line">        &#125; catch (JsonProcessingException e) &#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ps.setString(parameterIndex, jsonText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取可以为null的结果集</span><br><span class="line">     *</span><br><span class="line">     * @param resultSet  结果集</span><br><span class="line">     * @param columnName 列名</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public T getNullableResult(ResultSet resultSet, String columnName) throws SQLException &#123;</span><br><span class="line">        String jsonText = resultSet.getString(columnName);</span><br><span class="line">        <span class="built_in">return</span> readToObject(jsonText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取可以为null的结果集</span><br><span class="line">     *</span><br><span class="line">     * @param resultSet   结果集</span><br><span class="line">     * @param columnIndex columnIndex 列标</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public T getNullableResult(ResultSet resultSet, int columnIndex) throws SQLException &#123;</span><br><span class="line">        String jsonText = resultSet.getString(columnIndex);</span><br><span class="line">        <span class="built_in">return</span> readToObject(jsonText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取可以为null的结果集</span><br><span class="line">     *</span><br><span class="line">     * @param callableStatement CallableStatement</span><br><span class="line">     * @param columnIndex       列号</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public T getNullableResult(CallableStatement callableStatement, int columnIndex) throws SQLException &#123;</span><br><span class="line">        String jsonText = callableStatement.getString(columnIndex);</span><br><span class="line">        <span class="built_in">return</span> readToObject(jsonText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private T readToObject(String jsonText) &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isEmpty(jsonText)) &#123;</span><br><span class="line">            <span class="built_in">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            T list = objectMapper.readValue(jsonText, <span class="built_in">type</span>);</span><br><span class="line">            <span class="built_in">return</span>  list;</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            logger.error(<span class="string">"字符串反序列化失败字符串为&#123;&#125;"</span>,jsonText,e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-          
-        
       
     </div>
     
@@ -368,161 +362,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/自定义typeHandler的使用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ascetic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="monk">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/23/自定义typeHandler的使用/" itemprop="url">自定义typeHandler的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T11:38:17+08:00">
-                2019-01-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/mybatis/" itemprop="url" rel="index">
-                    <span itemprop="name">mybatis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/mybatis/" rel="tag"># mybatis</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="简单TypeHandler-的使用"><a href="#简单TypeHandler-的使用" class="headerlink" title="简单TypeHandler 的使用"></a>简单TypeHandler 的使用</h2><p>mybatis是一个常用的一个ORM框架，但是mybatis提供的TypeHandler往往是不够用的，例如某些数据库支持json、数组等的支持，但是mybatis对于这些数据类型没有支持，接下来就需要我们自定义TypeHandler了。</p>
-<h3 id="1、创建TypeHandler类继承BaseTypeHandler。"><a href="#1、创建TypeHandler类继承BaseTypeHandler。" class="headerlink" title="1、创建TypeHandler类继承BaseTypeHandler。"></a>1、创建TypeHandler类继承BaseTypeHandler。</h3><p>下面是一个针对数组类型的TypeHandler，并实现方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">public class ArrayTypeHandler extends BaseTypeHandler&lt;Object[]&gt; &#123;</span><br><span class="line">    private static final String TYPE_NAME_VARCHAR = <span class="string">"varchar"</span>;</span><br><span class="line">    private static final String TYPE_NAME_INTEGER = <span class="string">"integer"</span>;</span><br><span class="line">    private static final String TYPE_NAME_BOOLEAN = <span class="string">"boolean"</span>;</span><br><span class="line">    private static final String TYPE_NAME_NUMERIC = <span class="string">"numeric"</span>;</span><br><span class="line"></span><br><span class="line">    private Logger logger = LoggerFactory.getLogger(this.getClass());</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 设置非空参数</span><br><span class="line">     *</span><br><span class="line">     * @param ps             PreparedStatement</span><br><span class="line">     * @param parameterIndex 参数i</span><br><span class="line">     * @param parameter      参数数组</span><br><span class="line">     * @param jdbcType       jdbcType</span><br><span class="line">     * @throws SQLException</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void setNonNullParameter(PreparedStatement ps, int parameterIndex, Object[] parameter, JdbcType jdbcType) throws SQLException &#123;</span><br><span class="line">        String typeName = null;</span><br><span class="line">        <span class="keyword">if</span> (parameter instanceof Integer[]) &#123;</span><br><span class="line">            typeName = TYPE_NAME_INTEGER;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (parameter instanceof String[]) &#123;</span><br><span class="line">            typeName = TYPE_NAME_VARCHAR;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (parameter instanceof Boolean[]) &#123;</span><br><span class="line">            typeName = TYPE_NAME_BOOLEAN;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (parameter instanceof Double[]) &#123;</span><br><span class="line">            typeName = TYPE_NAME_NUMERIC;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (typeName == null) &#123;</span><br><span class="line">            throw new TypeException(<span class="string">"ArrayTypeHandler parameter typeName error, your type is "</span> + parameter.getClass().getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 这3行是关键的代码，创建Array，然后ps.setArray(parameterIndex, array)就可以了</span><br><span class="line">        Connection conn = ps.getConnection();</span><br><span class="line">        Array array = conn.createArrayOf(typeName, parameter);</span><br><span class="line">        ps.setArray(parameterIndex, array);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取可以为null的结果集</span><br><span class="line">     *</span><br><span class="line">     * @param resultSet  结果集</span><br><span class="line">     * @param columnName 列名</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public Object[] getNullableResult(ResultSet resultSet, String columnName) throws SQLException &#123;</span><br><span class="line">        <span class="built_in">return</span> getArray(resultSet.getArray(columnName));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取可以为null的结果集</span><br><span class="line">     *</span><br><span class="line">     * @param resultSet   结果集</span><br><span class="line">     * @param columnIndex columnIndex 列标</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public Object[] getNullableResult(ResultSet resultSet, int columnIndex) throws SQLException &#123;</span><br><span class="line">        <span class="built_in">return</span> getArray(resultSet.getArray(columnIndex));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取可以为null的结果集</span><br><span class="line">     *</span><br><span class="line">     * @param callableStatement CallableStatement</span><br><span class="line">     * @param paramIndex        列号</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public Object[] getNullableResult(CallableStatement callableStatement, int paramIndex) throws SQLException &#123;</span><br><span class="line">        <span class="built_in">return</span> getArray(callableStatement.getArray(paramIndex));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 将ARRAY 转为 java数组</span><br><span class="line">     *</span><br><span class="line">     * @param array 数组</span><br><span class="line">     * @<span class="built_in">return</span></span><br><span class="line">     */</span><br><span class="line">    private Object[] getArray(Array array) &#123;</span><br><span class="line">        <span class="keyword">if</span> (array == null) &#123;</span><br><span class="line">            <span class="built_in">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line">        try &#123;</span><br><span class="line">            <span class="built_in">return</span> (Object[]) array.getArray();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            logger.error(<span class="string">"ARRAY转为java数组出错"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> null;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2、接下来在项目中使用TypeHandler使用"><a href="#2、接下来在项目中使用TypeHandler使用" class="headerlink" title="2、接下来在项目中使用TypeHandler使用"></a>2、接下来在项目中使用TypeHandler使用</h3><h4 id="1）最简单粗暴的方式为在xml文件中直接指定TypeHandler"><a href="#1）最简单粗暴的方式为在xml文件中直接指定TypeHandler" class="headerlink" title="1）最简单粗暴的方式为在xml文件中直接指定TypeHandler"></a>1）最简单粗暴的方式为在xml文件中直接指定TypeHandler</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username_arr=<span class="comment">#&#123;username_arr,typeHandler=xxx.xxx.ArrayTypeHandler&#125;::VARCHAR[]</span></span><br></pre></td></tr></table></figure>
-<h4 id="2）在项目中引入TypeHandler"><a href="#2）在项目中引入TypeHandler" class="headerlink" title="2）在项目中引入TypeHandler"></a>2）在项目中引入TypeHandler</h4><p>在mybatis的配置文件中添加typeHandler标签 如下所示<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;typeHandlers&gt;</span><br><span class="line">  &lt;typeHandler handler=<span class="string">"org.mybatis.example.ExampleTypeHandler"</span>/&gt;</span><br><span class="line">&lt;/typeHandlers&gt;</span><br></pre></td></tr></table></figure></p>
-<p>然后在自定义Typehandler上添加@MappedTypes和@MappedJdbcTypes注解。例如对于数组类型的TypeHandler，如下所示<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@MappedTypes(&#123;Integer[].class,String[].class,Boolean[].class,Number[].class&#125;)</span><br><span class="line">@MappedJdbcTypes(value = &#123;JdbcType.ARRAY&#125;,includeNullJdbcType = <span class="literal">true</span>)</span><br></pre></td></tr></table></figure></p>
-<p>然后在对应字段上就可以自动使用typeHandler了,例如用户名数组为位String数组，对应到数据库上就是vvarchar[],就可以如下使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username_arr=<span class="comment">#&#123;username_arr&#125;::VARCHAR[]</span></span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/23/自定义typeHandler的使用/" rel="next" title="自定义typeHandler的使用">
+                <i class="fa fa-chevron-left"></i> 自定义typeHandler的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -532,10 +401,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -543,6 +413,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -563,8 +437,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -624,6 +507,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型TypeHandler的使用"><span class="nav-number">1.</span> <span class="nav-text">泛型TypeHandler的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、将TypeHandler改为泛型的TypeHandler"><span class="nav-number">1.1.</span> <span class="nav-text">1、将TypeHandler改为泛型的TypeHandler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、给该类添加参数type并添加构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">2、给该类添加参数type并添加构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、添加映射类型"><span class="nav-number">1.3.</span> <span class="nav-text">3、添加映射类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -757,6 +656,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
