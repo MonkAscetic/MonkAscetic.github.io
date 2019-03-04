@@ -346,7 +346,8 @@
       
         
           
-            <h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><h2 id="1、加载"><a href="#1、加载" class="headerlink" title="1、加载"></a>1、加载</h2><p>查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情:</p>
+            <h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title:类加载过程</span><br></pre></td></tr></table></figure>
+<h2 id="1、加载"><a href="#1、加载" class="headerlink" title="1、加载"></a>1、加载</h2><p>查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情:</p>
 <p>1.​通过一个类的全限定名来获取类定义此类的二进制流。</p>
 <p>2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</p>
 <p>3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。</p>
@@ -799,7 +800,7 @@
 <h3 id="2、接下来在项目中使用TypeHandler使用"><a href="#2、接下来在项目中使用TypeHandler使用" class="headerlink" title="2、接下来在项目中使用TypeHandler使用"></a>2、接下来在项目中使用TypeHandler使用</h3><h4 id="1）最简单粗暴的方式为在xml文件中直接指定TypeHandler"><a href="#1）最简单粗暴的方式为在xml文件中直接指定TypeHandler" class="headerlink" title="1）最简单粗暴的方式为在xml文件中直接指定TypeHandler"></a>1）最简单粗暴的方式为在xml文件中直接指定TypeHandler</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username_arr=#&#123;username_arr,typeHandler=xxx.xxx.ArrayTypeHandler&#125;::VARCHAR[]</span><br></pre></td></tr></table></figure>
 <h4 id="2）在项目中引入TypeHandler"><a href="#2）在项目中引入TypeHandler" class="headerlink" title="2）在项目中引入TypeHandler"></a>2）在项目中引入TypeHandler</h4><p>在mybatis的配置文件中添加typeHandler标签 如下所示<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;typeHandlers&gt;</span><br><span class="line">  &lt;typeHandler handler=<span class="string">"org.mybatis.example.ExampleTypeHandler"</span>/&gt;</span><br><span class="line">&lt;/typeHandlers&gt;</span><br></pre></td></tr></table></figure></p>
 <p>然后在自定义Typehandler上添加@MappedTypes和@MappedJdbcTypes注解。例如对于数组类型的TypeHandler，如下所示<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MappedTypes</span>(&#123;Integer[].class,String[].class,Boolean[].class,Number[].class&#125;)</span><br><span class="line"><span class="meta">@MappedJdbcTypes</span>(value = &#123;JdbcType.ARRAY&#125;,includeNullJdbcType = <span class="keyword">true</span>)</span><br></pre></td></tr></table></figure></p>
-<p>然后在对应字段上就可以自动使用typeHandler了,例如用户名数组为位String数组，对应到数据库上就是vvarchar[],就可以如下使用<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username_arr=#&#123;username_arr&#125;::VARCHAR[]</span><br></pre></td></tr></table></figure></p>
+<p>然后在对应字段上就可以自动使用typeHandler了,例如用户名数组为位String数组，对应到数据库上就是varchar[],就可以如下使用<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username_arr=#&#123;username_arr&#125;::VARCHAR[]</span><br></pre></td></tr></table></figure></p>
 
           
         

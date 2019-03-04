@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="类加载过程1、加载查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情: 1.​通过一个类的全限定名来获取类定义此类的二进制流。 2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。 2、连接连接是将已经读入内存的类的二进制数据合并到虚拟机的运行时环境中去。">
+<meta name="description" content="类加载过程1title:类加载过程 1、加载查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情: 1.​通过一个类的全限定名来获取类定义此类的二进制流。 2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。 2、连接连接是将已经读入内存的类的二进制数据合并到">
 <meta name="keywords" content="虚拟机类加载机器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类加载器">
 <meta property="og:url" content="http://yoursite.com/2019/03/01/类加载机制/index.html">
 <meta property="og:site_name" content="ascetic">
-<meta property="og:description" content="类加载过程1、加载查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情: 1.​通过一个类的全限定名来获取类定义此类的二进制流。 2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。 2、连接连接是将已经读入内存的类的二进制数据合并到虚拟机的运行时环境中去。">
+<meta property="og:description" content="类加载过程1title:类加载过程 1、加载查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情: 1.​通过一个类的全限定名来获取类定义此类的二进制流。 2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。 2、连接连接是将已经读入内存的类的二进制数据合并到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-01T10:23:50.214Z">
+<meta property="og:updated_time" content="2019-03-04T02:40:54.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类加载器">
-<meta name="twitter:description" content="类加载过程1、加载查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情: 1.​通过一个类的全限定名来获取类定义此类的二进制流。 2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。 2、连接连接是将已经读入内存的类的二进制数据合并到虚拟机的运行时环境中去。">
+<meta name="twitter:description" content="类加载过程1title:类加载过程 1、加载查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情: 1.​通过一个类的全限定名来获取类定义此类的二进制流。 2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。 2、连接连接是将已经读入内存的类的二进制数据合并到">
 
 
 
@@ -342,7 +342,8 @@
       
 
       
-        <h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><h2 id="1、加载"><a href="#1、加载" class="headerlink" title="1、加载"></a>1、加载</h2><p>查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情:</p>
+        <h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title:类加载过程</span><br></pre></td></tr></table></figure>
+<h2 id="1、加载"><a href="#1、加载" class="headerlink" title="1、加载"></a>1、加载</h2><p>查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情:</p>
 <p>1.​通过一个类的全限定名来获取类定义此类的二进制流。</p>
 <p>2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</p>
 <p>3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。</p>
