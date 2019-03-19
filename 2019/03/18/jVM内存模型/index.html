@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="多线程,">
+  <meta name="keywords" content="java内存区域,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一线程再次">
-<meta name="keywords" content="多线程">
+<meta name="description" content="java虚拟机运行时区域 程序计数器程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为”线程私有“内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在j">
+<meta name="keywords" content="java内存区域">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多线程-基本概念">
-<meta property="og:url" content="http://yoursite.com/2019/01/25/多线程-基本概念/index.html">
+<meta property="og:title" content="java虚拟机运行时数据区">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/jVM内存模型/index.html">
 <meta property="og:site_name" content="ascetic">
-<meta property="og:description" content="重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一线程再次">
+<meta property="og:description" content="java虚拟机运行时区域 程序计数器程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为”线程私有“内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在j">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-30T08:36:21.233Z">
+<meta property="og:image" content="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLIXAJIv9p4lFILMevk8ioY_DIt7EByfBBL8mCkMgvKB8AhtOF-75mfvdqxSzcxhXMU-wfpsxbC1Q42gUxzh_V4NtorbJdY_RZL04L8EiwCNCMS-wvp-Ri-lPWewOl31VXU2InEHi9ULm3yyGLrIbp-QiUJfdmxDfEvzjdWfMxPTOabcMgk2RMfAHduAgKG4Aa9spellfhluNwnO2tV9qvegOl82Y_7IGbvs1lYm1-Z0eDJsp6CX0DgEM2zqKiAUUjcvyiciragU0Yb0T-tH1MqoUWaTgOe6IiazcUaQ9Ur5Y9Pf_m3u1QWSgXFh1iIWr4Lazn0cr0000">
+<meta property="og:updated_time" content="2019-03-19T08:01:10.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多线程-基本概念">
-<meta name="twitter:description" content="重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一线程再次">
+<meta name="twitter:title" content="java虚拟机运行时数据区">
+<meta name="twitter:description" content="java虚拟机运行时区域 程序计数器程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为”线程私有“内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在j">
+<meta name="twitter:image" content="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLIXAJIv9p4lFILMevk8ioY_DIt7EByfBBL8mCkMgvKB8AhtOF-75mfvdqxSzcxhXMU-wfpsxbC1Q42gUxzh_V4NtorbJdY_RZL04L8EiwCNCMS-wvp-Ri-lPWewOl31VXU2InEHi9ULm3yyGLrIbp-QiUJfdmxDfEvzjdWfMxPTOabcMgk2RMfAHduAgKG4Aa9spellfhluNwnO2tV9qvegOl82Y_7IGbvs1lYm1-Z0eDJsp6CX0DgEM2zqKiAUUjcvyiciragU0Yb0T-tH1MqoUWaTgOe6IiazcUaQ9Ur5Y9Pf_m3u1QWSgXFh1iIWr4Lazn0cr0000">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/25/多线程-基本概念/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/18/jVM内存模型/">
 
 
 
 
 
-  <title>多线程-基本概念 | ascetic</title>
+  <title>java虚拟机运行时数据区 | ascetic</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/25/多线程-基本概念/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/jVM内存模型/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ascetic">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">多线程-基本概念</h1>
+          <h1 class="post-title" itemprop="name headline">java虚拟机运行时数据区</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-25T11:18:24+08:00">
-                2019-01-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T17:39:32+08:00">
+                2019-03-18
               </time>
             
 
@@ -305,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/多线程/" itemprop="url" rel="index">
-                    <span itemprop="name">多线程</span>
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
                   </a>
                 </span>
 
@@ -342,10 +344,13 @@
       
 
       
-        <h2 id="重入"><a href="#重入" class="headerlink" title="重入"></a>重入</h2><p>当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。</p>
-<p>重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一线程再次访问时将计数器加1，当同一线程退出同步代码块时，计数器减1，当技术器为0时，该锁将被释放。</p>
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>当变量被声明为volatile类型后，编译器与运行时都会注意到这个变量是共享的，因此不会将该变量上的操作与其他内存操作一起重排序。volatile变量不会被缓存在寄存器或者对其他处理器不可见的地方,因此在读取volatile类型的变量时总会返回最新写入的值。</p>
-<p><strong>加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性</strong></p>
+        <h2 id="java虚拟机运行时区域"><a href="#java虚拟机运行时区域" class="headerlink" title="java虚拟机运行时区域"></a>java虚拟机运行时区域</h2><img src="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLIXAJIv9p4lFILMevk8ioY_DIt7EByfBBL8mCkMgvKB8AhtOF-75mfvdqxSzcxhXMU-wfpsxbC1Q42gUxzh_V4NtorbJdY_RZL04L8EiwCNCMS-wvp-Ri-lPWewOl31VXU2InEHi9ULm3yyGLrIbp-QiUJfdmxDfEvzjdWfMxPTOabcMgk2RMfAHduAgKG4Aa9spellfhluNwnO2tV9qvegOl82Y_7IGbvs1lYm1-Z0eDJsp6CX0DgEM2zqKiAUUjcvyiciragU0Yb0T-tH1MqoUWaTgOe6IiazcUaQ9Ur5Y9Pf_m3u1QWSgXFh1iIWr4Lazn0cr0000">
+<h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><p>程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为<strong>”线程私有“</strong>内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在java虚拟机规范中没有规定OutOfMemoryError情况的区域。</p>
+<h2 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h2><p>Java虚拟机栈是线程私有的，它的生命周期与线程相同。此虚拟机栈描述的Java方法执行的内存模型：每个方法在执行的同时创建一个栈帧用于存储局部变量表、操作数栈、动态链接、方法调用出口等。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈到出站的过程。当线程请求的栈深度大于虚拟机栈允许的深度，会抛出StackOverflowError。当无法申请到内存时会抛出OutOfMemoryError异常。</p>
+<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈与虚拟栈所发挥的作用是非常相似的，它们之间区别是虚拟机栈为java方法服务，而本地方法栈为native方法服务。</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>堆是被所有线程共享的区域，在虚拟机启动时创建。对于大多数应用来说，java堆是java虚拟机锁管理的内存中最大的一块。此内存唯一的目的就是存放对象实例，几乎所有的对象实例都在这里分配。堆是垃圾收集器管理的主要区域，因此很多时候也称为”GC堆”。堆可以处于不连续的内存空间中，只要逻辑连续即可。主流的虚拟机都可以可扩展的.(通过-Xmx 和-Xms控制)。</p>
+<h2 id="方法区-非堆"><a href="#方法区-非堆" class="headerlink" title="方法区(非堆)"></a>方法区(非堆)</h2><p>方法区也是线程共享的区域，是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息，常量、静态常量、即时编译后的代码数据。</p>
+<h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><p>运行时常量吃屎方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等还有一想信息是常量池。用于存放编译器生成的克重字面量和符号引用这部分内容将在类加载后进入方法区的运行时常量池。</p>
 
       
     </div>
@@ -363,7 +368,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+            <a href="/tags/java内存区域/" rel="tag"># java内存区域</a>
           
         </div>
       
@@ -376,8 +381,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/24/自定义泛型TypeHandler的使用/" rel="next" title="自定义泛型TypeHandler的使用">
-                <i class="fa fa-chevron-left"></i> 自定义泛型TypeHandler的使用
+              <a href="/2019/03/01/类加载机制/" rel="next" title="类加载机制">
+                <i class="fa fa-chevron-left"></i> 类加载机制
               </a>
             
           </div>
@@ -385,10 +390,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/01/类加载机制/" rel="prev" title="类加载机制">
-                类加载机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -524,7 +525,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重入"><span class="nav-number">1.</span> <span class="nav-text">重入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile"><span class="nav-number">2.</span> <span class="nav-text">volatile</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java虚拟机运行时区域"><span class="nav-number">1.</span> <span class="nav-text">java虚拟机运行时区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">2.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机栈"><span class="nav-number">3.</span> <span class="nav-text">虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">4.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-number">5.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区-非堆"><span class="nav-number">6.</span> <span class="nav-text">方法区(非堆)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时常量池"><span class="nav-number">7.</span> <span class="nav-text">运行时常量池</span></a></li></ol></div>
             
 
           </div>
