@@ -88,7 +88,7 @@
 <meta property="og:description" content="java虚拟机运行时区域 程序计数器程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为”线程私有“内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在j">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLIXAJIv9p4lFILMevk8ioY_DIt7EByfBBL8mCkMgvKB8AhtOF-75mfvdqxSzcxhXMU-wfpsxbC1Q42gUxzh_V4NtorbJdY_RZL04L8EiwCNCMS-wvp-Ri-lPWewOl31VXU2InEHi9ULm3yyGLrIbp-QiUJfdmxDfEvzjdWfMxPTOabcMgk2RMfAHduAgKG4Aa9spellfhluNwnO2tV9qvegOl82Y_7IGbvs1lYm1-Z0eDJsp6CX0DgEM2zqKiAUUjcvyiciragU0Yb0T-tH1MqoUWaTgOe6IiazcUaQ9Ur5Y9Pf_m3u1QWSgXFh1iIWr4Lazn0cr0000">
-<meta property="og:updated_time" content="2019-03-20T02:29:23.915Z">
+<meta property="og:updated_time" content="2019-04-04T05:46:33.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java虚拟机运行时数据区">
 <meta name="twitter:description" content="java虚拟机运行时区域 程序计数器程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为”线程私有“内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在j">
@@ -350,7 +350,7 @@
 <h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈与虚拟栈所发挥的作用是非常相似的，它们之间区别是虚拟机栈为java方法服务，而本地方法栈为native方法服务。</p>
 <h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>堆是被所有线程共享的区域，在虚拟机启动时创建。对于大多数应用来说，java堆是java虚拟机锁管理的内存中最大的一块。此内存唯一的目的就是存放对象实例，几乎所有的对象实例都在这里分配。堆是垃圾收集器管理的主要区域，因此很多时候也称为”GC堆”。堆可以处于不连续的内存空间中，只要逻辑连续即可。主流的虚拟机都可以可扩展的.(通过-Xmx 和-Xms控制)。</p>
 <h2 id="方法区-非堆"><a href="#方法区-非堆" class="headerlink" title="方法区(非堆)"></a>方法区(非堆)</h2><p>方法区也是线程共享的区域，是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息，常量、静态常量、即时编译后的代码数据。</p>
-<h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><p>运行时常量吃屎方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等还有一想信息是常量池。用于存放编译器生成的克重字面量和符号引用这部分内容将在类加载后进入方法区的运行时常量池。</p>
+<h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><p>运行时常量池是方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等还有一想信息是常量池。用于存放编译器生成的字面量和符号引用这部分内容将在类加载后进入方法区的运行时常量池。</p>
 
       
     </div>
