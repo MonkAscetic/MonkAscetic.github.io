@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ascetic">
 <meta property="og:description" content="垃圾收集器按照分代区分为老年代收集器和新生代收集器。年轻代收集器包含:Serial、ParNew 、Parallel Scavenge、G1 ;老年代收集器有:CMS、Serial Old(MSC) 、Parallel Old、G1 。G1 收集器既能收集新生代也能收集老年代。 Serial 收集器Serial 是一个新生代收集器，单线程工作，使用复制算法。当垃圾收集时其他的所有线程都处于暂停状态">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-05T08:26:10.471Z">
+<meta property="og:updated_time" content="2020-06-05T08:48:38.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="垃圾收集器">
 <meta name="twitter:description" content="垃圾收集器按照分代区分为老年代收集器和新生代收集器。年轻代收集器包含:Serial、ParNew 、Parallel Scavenge、G1 ;老年代收集器有:CMS、Serial Old(MSC) 、Parallel Old、G1 。G1 收集器既能收集新生代也能收集老年代。 Serial 收集器Serial 是一个新生代收集器，单线程工作，使用复制算法。当垃圾收集时其他的所有线程都处于暂停状态">
@@ -343,7 +343,7 @@
 
       
         <h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><p>按照分代区分为老年代收集器和新生代收集器。年轻代收集器包含:<strong>Serial</strong>、<strong>ParNew</strong> 、<strong>Parallel Scavenge</strong>、<strong>G1</strong> ;老年代收集器有:<strong>CMS</strong>、<strong>Serial Old(MSC)</strong> 、<strong>Parallel Old</strong>、<strong>G1</strong> 。G1 收集器既能收集新生代也能收集老年代。</p>
-<h3 id="Serial-收集器"><a href="#Serial-收集器" class="headerlink" title="Serial 收集器"></a>Serial 收集器</h3><p>Serial 是一个新生代收集器，单线程工作，使用复制算法。当垃圾收集时其他的所有线程都处于暂停状态(Stop The World)。</p>
+<h3 id="Serial-收集器"><a href="#Serial-收集器" class="headerlink" title="Serial 收集器"></a>Serial 收集器</h3><p>Serial 是一个新生代收集器，单线程工作，使用复制算法。当垃圾收集时其他的所有线程都处于暂停状态(Stop The World)，优点：简单高效。</p>
 <h3 id="ParNew-收集器"><a href="#ParNew-收集器" class="headerlink" title="ParNew 收集器"></a>ParNew 收集器</h3><p>ParNew 是Serial 收集器的多线程版本，使用复制算法。在Serail的基础上增加了多线程垃圾收集。</p>
 <h3 id="Parallel-Scavenge-收集器"><a href="#Parallel-Scavenge-收集器" class="headerlink" title="Parallel Scavenge 收集器"></a>Parallel Scavenge 收集器</h3><p>Parallel Scavenge 是一个新生代多线程收集器，使用复制算法。收集器的目标是达到一个可以控制的吞吐量。</p>
 <h3 id="Serial-Old"><a href="#Serial-Old" class="headerlink" title="Serial Old"></a>Serial Old</h3><p>Serial 收集器的老年代版本，单线程，使用标记整理算法。</p>
@@ -360,7 +360,15 @@
 <li><p>并发清除</p>
 </li>
 </ol>
-<p>其中，初始标记、重新标记着两个步骤仍然需要”Stop The World”。初始标记仅仅标记一下GC Roots能直接关联到的对象，速度很快。并发标记阶段就是进行Gc Roots Tracing 的过程，而重新标记阶段则是为了修正并发标记期间因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录。这个阶段的停顿时间一般会比初始化标记阶段稍长一些。单远比并发标记的时间短。<br>CMS 的缺点:</p>
+<p>其中，初始标记、重新标记着两个步骤仍然需要”Stop The World”。初始标记仅仅标记一下GC Roots能直接关联到的对象，速度很快。并发标记阶段就是进行GC Roots Tracing 的过程，而重新标记阶段则是为了修正并发标记期间因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录。这个阶段的停顿时间一般会比初始化标记阶段稍长一些。但是远比并发标记的时间短。</p>
+<p>CMS 的优点：</p>
+<ol>
+<li><p>并发收集</p>
+</li>
+<li><p>低停顿</p>
+</li>
+</ol>
+<p>CMS 的缺点:</p>
 <ol>
 <li>CMS收集器对CPU资源敏感。并发阶段会降低吞吐量。</li>
 <li>CMS 收集器无法处理浮动垃圾</li>
