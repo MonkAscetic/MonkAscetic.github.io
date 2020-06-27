@@ -253,6 +253,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/26/HashMap/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ascetic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ascetic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/HashMap/" itemprop="url">HashMap(1.8)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-26T16:06:03+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>HashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树)</p>
+<h3 id="HashMap的put过程"><a href="#HashMap的put过程" class="headerlink" title="HashMap的put过程"></a>HashMap的put过程</h3><ol>
+<li><p>判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)</p>
+</li>
+<li><p>如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可</p>
+</li>
+<li><p>如果当前桶的第一个node的hashcode和equals都返回true那么将该位置的值修改即可</p>
+</li>
+<li><p>如果当前节点是红黑树的node的话，调用红黑树的添加方法</p>
+</li>
+<li><p>如果当前节点是链表的话，遍历链表，如果hashcode和equals都返回true的话，修改对应的值,如果找到节点尾部，那么在尾部新建一个节点，并判断是否将链表转化为红黑树</p>
+</li>
+<li><p>判断是否需要扩容，如果需要进行扩容</p>
+</li>
+</ol>
+<h3 id="tableSizeFor方法解析"><a href="#tableSizeFor方法解析" class="headerlink" title="tableSizeFor方法解析"></a>tableSizeFor方法解析</h3><p>HashMap 在初始化时需要指定initialCapacity(默认16)和loadFactor(默认0.75),initialCapacity在很多规范中建议，为需要初始化数据的1.5倍或者大于等于1.5倍的2的n次方，原因是防止扩容。<br>但是实际上这是没有必要的，在jdk1.8中HashMap中已经解决了该问题，HashMap的tableSizeFor中通过位运算的方式会将一个不是2的n次方的数转换为大于该数的最小的2的n次方数。如果恰好是2的n次方的话那么只要大于该值就可以了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">   <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="ConcurrentHashMap的put过程"><a href="#ConcurrentHashMap的put过程" class="headerlink" title="ConcurrentHashMap的put过程"></a>ConcurrentHashMap的put过程</h2><p>HashMap的基本构造相同，区别是node中value和next被标识为volatile保证数据可见性，CAS + synchronized保证数据可见性。</p>
+<ol>
+<li><p>如果tab为空初始化数组(通过sizeCtl参数使用CAS方式确保只有一个线程在初始化数组)</p>
+</li>
+<li><p>如果当前桶是空的，新建一个node，放到该桶的头部，通过CAS算法保证线程安全</p>
+</li>
+<li><p>如果当前是在扩容中通过helpTransfer并发扩容</p>
+</li>
+<li><p>如果当前的桶的第一个node等于(hashcode相等并且equals相等)key且不需要更新，则返回该节点</p>
+</li>
+<li><p>否则对该桶加锁，遍历该链表，如果找到key相等的就更新该位置位置的数据，否则就把该节点放到链表尾部</p>
+</li>
+<li><p>如果链表长度达到8并且桶的个数大于64会将该列表转化为红黑树。通过synchronized实现同步</p>
+</li>
+<li><p>计数加1，并且判断是否需要扩容，如果需要扩容，将进行并发扩容</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/垃圾收集器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -986,7 +1161,7 @@
       
         
           
-            <p>多线程的</p>
+            <p>多线程</p>
 <h2 id="重入"><a href="#重入" class="headerlink" title="重入"></a>重入</h2><p>当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。</p>
 <p>重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一线程再次访问时将计数器加1，当同一线程退出同步代码块时，计数器减1，当技术器为0时，该锁将被释放。</p>
 <h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>当变量被声明为volatile类型后，编译器与运行时都会注意到这个变量是共享的，因此不会将该变量上的操作与其他内存操作一起重排序。volatile变量不会被缓存在寄存器或者对其他处理器不可见的地方,因此在读取volatile类型的变量时总会返回最新写入的值。</p>
@@ -1381,7 +1556,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1392,7 +1567,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1403,7 +1578,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

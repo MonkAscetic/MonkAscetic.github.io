@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="多线程的 重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同">
+<meta name="description" content="多线程 重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一">
 <meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程-基本概念">
 <meta property="og:url" content="http://yoursite.com/2019/01/25/多线程-基本概念/index.html">
 <meta property="og:site_name" content="ascetic">
-<meta property="og:description" content="多线程的 重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同">
+<meta property="og:description" content="多线程 重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-05T06:27:16.995Z">
+<meta property="og:updated_time" content="2020-06-27T07:37:42.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程-基本概念">
-<meta name="twitter:description" content="多线程的 重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同">
+<meta name="twitter:description" content="多线程 重入当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。 重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一">
 
 
 
@@ -342,7 +342,7 @@
       
 
       
-        <p>多线程的</p>
+        <p>多线程</p>
 <h2 id="重入"><a href="#重入" class="headerlink" title="重入"></a>重入</h2><p>当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。</p>
 <p>重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一线程再次访问时将计数器加1，当同一线程退出同步代码块时，计数器减1，当技术器为0时，该锁将被释放。</p>
 <h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>当变量被声明为volatile类型后，编译器与运行时都会注意到这个变量是共享的，因此不会将该变量上的操作与其他内存操作一起重排序。volatile变量不会被缓存在寄存器或者对其他处理器不可见的地方,因此在读取volatile类型的变量时总会返回最新写入的值。</p>
@@ -486,7 +486,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -497,7 +497,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -508,7 +508,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

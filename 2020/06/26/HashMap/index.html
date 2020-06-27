@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JVM,">
+  <meta name="keywords" content="HashMap,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="java虚拟机运行时区域 程序计数器程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为”线程私有“内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在j">
-<meta name="keywords" content="JVM">
+<meta name="description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和eq">
+<meta name="keywords" content="HashMap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java虚拟机运行时数据区">
-<meta property="og:url" content="http://yoursite.com/2019/03/18/jVM内存模型/index.html">
+<meta property="og:title" content="HashMap(1.8)">
+<meta property="og:url" content="http://yoursite.com/2020/06/26/HashMap/index.html">
 <meta property="og:site_name" content="ascetic">
-<meta property="og:description" content="java虚拟机运行时区域 程序计数器程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为”线程私有“内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在j">
+<meta property="og:description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和eq">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLIXAJIv9p4lFILMevk8ioY_DIt7EByfBBL8mCkMgvKB8AhtOF-75mfvdqxSzcxhXMU-wfpsxbC1Q42gUxzh_V4NtorbJdY_RZL04L8EiwCNCMS-wvp-Ri-lPWewOl31VXU2InEHi9ULm3yyGLrIbp-QiUJfdmxDfEvzjdWfMxPTOabcMgk2RMfAHduAgKG4Aa9spellfhluNwnO2tV9qvegOl82Y_7IGbvs1lYm1-Z0eDJsp6CX0DgEM2zqKiAUUjcvyiciragU0Yb0T-tH1MqoUWaTgOe6IiazcUaQ9Ur5Y9Pf_m3u1QWSgXFh1iIWr4Lazn0cr0000">
-<meta property="og:updated_time" content="2019-04-04T05:46:33.864Z">
+<meta property="og:updated_time" content="2020-06-27T07:36:56.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java虚拟机运行时数据区">
-<meta name="twitter:description" content="java虚拟机运行时区域 程序计数器程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为”线程私有“内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在j">
-<meta name="twitter:image" content="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLIXAJIv9p4lFILMevk8ioY_DIt7EByfBBL8mCkMgvKB8AhtOF-75mfvdqxSzcxhXMU-wfpsxbC1Q42gUxzh_V4NtorbJdY_RZL04L8EiwCNCMS-wvp-Ri-lPWewOl31VXU2InEHi9ULm3yyGLrIbp-QiUJfdmxDfEvzjdWfMxPTOabcMgk2RMfAHduAgKG4Aa9spellfhluNwnO2tV9qvegOl82Y_7IGbvs1lYm1-Z0eDJsp6CX0DgEM2zqKiAUUjcvyiciragU0Yb0T-tH1MqoUWaTgOe6IiazcUaQ9Ur5Y9Pf_m3u1QWSgXFh1iIWr4Lazn0cr0000">
+<meta name="twitter:title" content="HashMap(1.8)">
+<meta name="twitter:description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和eq">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/18/jVM内存模型/">
+  <link rel="canonical" href="http://yoursite.com/2020/06/26/HashMap/">
 
 
 
 
 
-  <title>java虚拟机运行时数据区 | ascetic</title>
+  <title>HashMap(1.8) | ascetic</title>
   
 
 
@@ -255,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/jVM内存模型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/26/HashMap/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ascetic">
@@ -272,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java虚拟机运行时数据区</h1>
+          <h1 class="post-title" itemprop="name headline">HashMap(1.8)</h1>
         
 
         <div class="post-meta">
@@ -284,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T17:39:32+08:00">
-                2019-03-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-26T16:06:03+08:00">
+                2020-06-26
               </time>
             
 
@@ -307,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/JVM/" itemprop="url" rel="index">
-                    <span itemprop="name">JVM</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -344,13 +342,40 @@
       
 
       
-        <h2 id="java虚拟机运行时区域"><a href="#java虚拟机运行时区域" class="headerlink" title="java虚拟机运行时区域"></a>java虚拟机运行时区域</h2><img src="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLIXAJIv9p4lFILMevk8ioY_DIt7EByfBBL8mCkMgvKB8AhtOF-75mfvdqxSzcxhXMU-wfpsxbC1Q42gUxzh_V4NtorbJdY_RZL04L8EiwCNCMS-wvp-Ri-lPWewOl31VXU2InEHi9ULm3yyGLrIbp-QiUJfdmxDfEvzjdWfMxPTOabcMgk2RMfAHduAgKG4Aa9spellfhluNwnO2tV9qvegOl82Y_7IGbvs1lYm1-Z0eDJsp6CX0DgEM2zqKiAUUjcvyiciragU0Yb0T-tH1MqoUWaTgOe6IiazcUaQ9Ur5Y9Pf_m3u1QWSgXFh1iIWr4Lazn0cr0000">
-<h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><p>程序计数器是当前线程所执行的字节码的行号指示器，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。该计数器线程切换时相互不影响，所以这类区域为<strong>”线程私有“</strong>内存。如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果执行的是一个native方法，这个计数器则为空(Undefined)。此区域是唯一一个在java虚拟机规范中没有规定OutOfMemoryError情况的区域。</p>
-<h2 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h2><p>Java虚拟机栈是线程私有的，它的生命周期与线程相同。此虚拟机栈描述的Java方法执行的内存模型：每个方法在执行的同时创建一个栈帧用于存储局部变量表、操作数栈、动态链接、方法调用出口等。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈到出站的过程。当线程请求的栈深度大于虚拟机栈允许的深度，会抛出StackOverflowError。当无法申请到内存时会抛出OutOfMemoryError异常。</p>
-<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈与虚拟栈所发挥的作用是非常相似的，它们之间区别是虚拟机栈为java方法服务，而本地方法栈为native方法服务。</p>
-<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>堆是被所有线程共享的区域，在虚拟机启动时创建。对于大多数应用来说，java堆是java虚拟机锁管理的内存中最大的一块。此内存唯一的目的就是存放对象实例，几乎所有的对象实例都在这里分配。堆是垃圾收集器管理的主要区域，因此很多时候也称为”GC堆”。堆可以处于不连续的内存空间中，只要逻辑连续即可。主流的虚拟机都可以可扩展的.(通过-Xmx 和-Xms控制)。</p>
-<h2 id="方法区-非堆"><a href="#方法区-非堆" class="headerlink" title="方法区(非堆)"></a>方法区(非堆)</h2><p>方法区也是线程共享的区域，是各个线程共享的内存区域，它用于存储已经被虚拟机加载的类信息，常量、静态常量、即时编译后的代码数据。</p>
-<h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><p>运行时常量池是方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等还有一想信息是常量池。用于存放编译器生成的字面量和符号引用这部分内容将在类加载后进入方法区的运行时常量池。</p>
+        <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>HashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树)</p>
+<h3 id="HashMap的put过程"><a href="#HashMap的put过程" class="headerlink" title="HashMap的put过程"></a>HashMap的put过程</h3><ol>
+<li><p>判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)</p>
+</li>
+<li><p>如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可</p>
+</li>
+<li><p>如果当前桶的第一个node的hashcode和equals都返回true那么将该位置的值修改即可</p>
+</li>
+<li><p>如果当前节点是红黑树的node的话，调用红黑树的添加方法</p>
+</li>
+<li><p>如果当前节点是链表的话，遍历链表，如果hashcode和equals都返回true的话，修改对应的值,如果找到节点尾部，那么在尾部新建一个节点，并判断是否将链表转化为红黑树</p>
+</li>
+<li><p>判断是否需要扩容，如果需要进行扩容</p>
+</li>
+</ol>
+<h3 id="tableSizeFor方法解析"><a href="#tableSizeFor方法解析" class="headerlink" title="tableSizeFor方法解析"></a>tableSizeFor方法解析</h3><p>HashMap 在初始化时需要指定initialCapacity(默认16)和loadFactor(默认0.75),initialCapacity在很多规范中建议，为需要初始化数据的1.5倍或者大于等于1.5倍的2的n次方，原因是防止扩容。<br>但是实际上这是没有必要的，在jdk1.8中HashMap中已经解决了该问题，HashMap的tableSizeFor中通过位运算的方式会将一个不是2的n次方的数转换为大于该数的最小的2的n次方数。如果恰好是2的n次方的话那么只要大于该值就可以了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">   <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="ConcurrentHashMap的put过程"><a href="#ConcurrentHashMap的put过程" class="headerlink" title="ConcurrentHashMap的put过程"></a>ConcurrentHashMap的put过程</h2><p>HashMap的基本构造相同，区别是node中value和next被标识为volatile保证数据可见性，CAS + synchronized保证数据可见性。</p>
+<ol>
+<li><p>如果tab为空初始化数组(通过sizeCtl参数使用CAS方式确保只有一个线程在初始化数组)</p>
+</li>
+<li><p>如果当前桶是空的，新建一个node，放到该桶的头部，通过CAS算法保证线程安全</p>
+</li>
+<li><p>如果当前是在扩容中通过helpTransfer并发扩容</p>
+</li>
+<li><p>如果当前的桶的第一个node等于(hashcode相等并且equals相等)key且不需要更新，则返回该节点</p>
+</li>
+<li><p>否则对该桶加锁，遍历该链表，如果找到key相等的就更新该位置位置的数据，否则就把该节点放到链表尾部</p>
+</li>
+<li><p>如果链表长度达到8并且桶的个数大于64会将该列表转化为红黑树。通过synchronized实现同步</p>
+</li>
+<li><p>计数加1，并且判断是否需要扩容，如果需要扩容，将进行并发扩容</p>
+</li>
+</ol>
 
       
     </div>
@@ -368,7 +393,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/HashMap/" rel="tag"># HashMap</a>
           
         </div>
       
@@ -381,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/01/类加载机制/" rel="next" title="类加载机制">
-                <i class="fa fa-chevron-left"></i> 类加载机制
+              <a href="/2019/04/16/垃圾收集器/" rel="next" title="垃圾收集器">
+                <i class="fa fa-chevron-left"></i> 垃圾收集器
               </a>
             
           </div>
@@ -390,10 +415,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/20/判断对象是否已死/" rel="prev" title="垃圾回收算法">
-                垃圾回收算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -529,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java虚拟机运行时区域"><span class="nav-number">1.</span> <span class="nav-text">java虚拟机运行时区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">2.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机栈"><span class="nav-number">3.</span> <span class="nav-text">虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">4.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-number">5.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区-非堆"><span class="nav-number">6.</span> <span class="nav-text">方法区(非堆)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时常量池"><span class="nav-number">7.</span> <span class="nav-text">运行时常量池</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap"><span class="nav-number">1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap的put过程"><span class="nav-number">1.1.</span> <span class="nav-text">HashMap的put过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tableSizeFor方法解析"><span class="nav-number">1.2.</span> <span class="nav-text">tableSizeFor方法解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConcurrentHashMap的put过程"><span class="nav-number">2.</span> <span class="nav-text">ConcurrentHashMap的put过程</span></a></li></ol></div>
             
 
           </div>
