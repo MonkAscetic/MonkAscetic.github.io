@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和eq">
+<meta name="description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的长度达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和">
 <meta name="keywords" content="HashMap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap(1.8)">
 <meta property="og:url" content="http://yoursite.com/2020/06/26/HashMap/index.html">
 <meta property="og:site_name" content="ascetic">
-<meta property="og:description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和eq">
+<meta property="og:description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的长度达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-27T07:36:56.422Z">
+<meta property="og:updated_time" content="2020-06-27T08:03:45.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap(1.8)">
-<meta name="twitter:description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和eq">
+<meta name="twitter:description" content="HashMapHashMap 由数组+链表+红黑树构成(当当前链表的长度达到8时，并且数组的长度达到64时会将链表转化为红黑树) HashMap的put过程 判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)  如果当前key的hashcode对应的桶的位置为空，直接新建一个node放到该桶上即可  如果当前桶的第一个node的hashcode和">
 
 
 
@@ -342,7 +342,7 @@
       
 
       
-        <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>HashMap 由数组+链表+红黑树构成(当当前链表的达到8时，并且数组的长度达到64时会将链表转化为红黑树)</p>
+        <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>HashMap 由数组+链表+红黑树构成(当当前链表的长度达到8时，并且数组的长度达到64时会将链表转化为红黑树)</p>
 <h3 id="HashMap的put过程"><a href="#HashMap的put过程" class="headerlink" title="HashMap的put过程"></a>HashMap的put过程</h3><ol>
 <li><p>判断当前整个桶是否为空，如果空的话，进行扩容(叫初始化更准确一些，扩容和初始化公用了resize方法)</p>
 </li>
@@ -358,7 +358,7 @@
 </li>
 </ol>
 <h3 id="tableSizeFor方法解析"><a href="#tableSizeFor方法解析" class="headerlink" title="tableSizeFor方法解析"></a>tableSizeFor方法解析</h3><p>HashMap 在初始化时需要指定initialCapacity(默认16)和loadFactor(默认0.75),initialCapacity在很多规范中建议，为需要初始化数据的1.5倍或者大于等于1.5倍的2的n次方，原因是防止扩容。<br>但是实际上这是没有必要的，在jdk1.8中HashMap中已经解决了该问题，HashMap的tableSizeFor中通过位运算的方式会将一个不是2的n次方的数转换为大于该数的最小的2的n次方数。如果恰好是2的n次方的话那么只要大于该值就可以了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">   n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">   <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line"><span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="ConcurrentHashMap的put过程"><a href="#ConcurrentHashMap的put过程" class="headerlink" title="ConcurrentHashMap的put过程"></a>ConcurrentHashMap的put过程</h2><p>HashMap的基本构造相同，区别是node中value和next被标识为volatile保证数据可见性，CAS + synchronized保证数据可见性。</p>
 <ol>
 <li><p>如果tab为空初始化数组(通过sizeCtl参数使用CAS方式确保只有一个线程在初始化数组)</p>
