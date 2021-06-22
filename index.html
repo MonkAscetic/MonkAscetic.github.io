@@ -361,7 +361,7 @@
 <ol>
 <li>分布式数据结构(Map,Set,Tree,技术器,值等)</li>
 <li>分布式会话(点对点，发布订阅等)</li>
-<li>分布式协调(分布式锁，分布式选举，分布式信号量，分布式barrier(类似于CyclicBarrier))</li>
+<li>分布式协调(分布式锁，分布式选举，分布式信号量，分布式barrier(可以看做分布式的CyclicBarrier))</li>
 <li>分组管理</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AtomicMap&lt;String, String&gt; map = atomix.&lt;String, String&gt;mapBuilder(<span class="string">"my-map"</span>)</span><br><span class="line">  .withCacheEnabled()</span><br><span class="line">  .build();</span><br></pre></td></tr></table></figure>
