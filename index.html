@@ -253,6 +253,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/04/15/chapterReader/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ascetic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ascetic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/04/15/chapterReader/" itemprop="url">chapterReader remote阅读问题解决</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-04-15T13:55:19+08:00">
+                2022-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/小说/" itemprop="url" rel="index">
+                    <span itemprop="name">小说</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="IDEA安装jclasslib"><a href="#IDEA安装jclasslib" class="headerlink" title="IDEA安装jclasslib"></a>IDEA安装jclasslib</h2><pre><code>直接应用市场里安装jclasslib,重启即可。
+</code></pre><h2 id="找到IDEA插件位置"><a href="#找到IDEA插件位置" class="headerlink" title="找到IDEA插件位置"></a>找到IDEA插件位置</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MAC:/Users/用户名/Library/Application Support/JetBrains/IntelliJIdea2021.1/plugins</span><br><span class="line">windows版本参考网上教程: https://blog.csdn.net/JOEYHHH/article/details/121975182</span><br><span class="line">注意:用户名和IDEA版本对路径的影响</span><br></pre></td></tr></table></figure>
+
+在该目录下找到chapter_reader/lib目录下的chapter_reader.jar文件,记住该包的地址
+</code></pre><h2 id="任意项目导入该jar"><a href="#任意项目导入该jar" class="headerlink" title="任意项目导入该jar"></a>任意项目导入该jar</h2><pre><code>1.file&gt;Project Structure&gt;Modules&gt;Denpendencies
+2.选择+，JARS or Directories 选择第二步中的找到的chapter_reader.jar
+</code></pre><img src="/2022/04/15/chapterReader/导入步骤图.jpg" title="步骤图">
+<pre><code>3.导入成功之后如图所示
+</code></pre><img src="/2022/04/15/chapterReader/导入结果.jpg" title="结果图">
+<h2 id="修改路径指向"><a href="#修改路径指向" class="headerlink" title="修改路径指向"></a>修改路径指向</h2><pre><code>1.选择RemoteSupportFactory，选择view然后选择show bytecode with jclasslib打开
+2.选择字段ALLATORIxDEMO下的ConstantValue
+3.修改值为https://raw.githubusercontent.com/MonkAscetic/testPost/mater/novel.json
+4.点击确定，然后点击保存按钮保存修改，重启IDEA
+</code></pre><img src="/2022/04/15/chapterReader/修改请求地址.jpg" title="修改请求地址">
+<h2 id="大工告成"><a href="#大工告成" class="headerlink" title="大工告成"></a>大工告成</h2><img src="/2022/04/15/chapterReader/大工告成.jpg" title="大工告成">
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>另外如果wind_invade/chapter_reader中未支持您想要看的地址，可以拷贝一份wind_invade/chapter_reader的json文件并增加您要看的地址放到git上，点击raw跳转到raw地址，将请求地址换位raw地址就可以看最新的在线网站了<br><img src="/2022/04/15/chapterReader/raw地址.jpg" title="raw地址s"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/06/22/Atomix安装和使用/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1720,152 +1877,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/自定义泛型TypeHandler的使用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ascetic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ascetic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/24/自定义泛型TypeHandler的使用/" itemprop="url">自定义泛型TypeHandler的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T15:26:43+08:00">
-                2019-01-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/mybatis/" itemprop="url" rel="index">
-                    <span itemprop="name">mybatis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="泛型TypeHandler的使用"><a href="#泛型TypeHandler的使用" class="headerlink" title="泛型TypeHandler的使用"></a>泛型TypeHandler的使用</h2><p>在上一篇博客中讲述了,TypeHandler的基本使用。但是对于某些结构对应多种类型。例如数据库字段为json结构，映射对象字段为自定义类型，那么难道到每种类型都要分别做处理吗？接下里稍作改造typeHandler，就可以完美适配。</p>
-<h3 id="1、将TypeHandler改为泛型的TypeHandler"><a href="#1、将TypeHandler改为泛型的TypeHandler" class="headerlink" title="1、将TypeHandler改为泛型的TypeHandler"></a>1、将TypeHandler改为泛型的TypeHandler</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JsonbTypeHandler&lt;T&gt; extends BaseTypeHandler&lt;T&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2、给该类添加参数type并添加构造函数"><a href="#2、给该类添加参数type并添加构造函数" class="headerlink" title="2、给该类添加参数type并添加构造函数"></a>2、给该类添加参数type并添加构造函数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> Class&lt;T&gt; type;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">JsonbTypeHandler</span><span class="params">(Class&lt;T&gt; type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (type == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Type argument cannot be null"</span>);</span><br><span class="line">        <span class="keyword">this</span>.type = type;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3、添加映射类型"><a href="#3、添加映射类型" class="headerlink" title="3、添加映射类型"></a>3、添加映射类型</h3><p>每次添加需要映射的类型，只要在@MappedTypes注解中添加需要映射的类型就可以了</p>
-<p>完整的带泛型的TypeHandler代码如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MappedJdbcTypes</span>(value = &#123;JdbcType.OTHER&#125;, includeNullJdbcType = <span class="keyword">true</span>)</span><br><span class="line"><span class="meta">@MappedTypes</span>(&#123; A.class , B[].class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonbTypeHandler</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">BaseTypeHandler</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(getClass());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Class&lt;T&gt; type;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JsonbTypeHandler</span><span class="params">(Class&lt;T&gt; type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (type == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Type argument cannot be null"</span>);</span><br><span class="line">        <span class="keyword">this</span>.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置非空参数</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> ps             PreparedStatement</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> parameterIndex 参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> parameter      参数数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> jdbcType       jdbcType</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> SQLException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNonNullParameter</span><span class="params">(PreparedStatement ps, <span class="keyword">int</span> parameterIndex, T parameter, JdbcType jdbcType)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        String jsonText;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            jsonText = objectMapper.writeValueAsString(parameter);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (JsonProcessingException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ps.setString(parameterIndex, jsonText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取可以为null的结果集</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resultSet  结果集</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> columnName 列名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getNullableResult</span><span class="params">(ResultSet resultSet, String columnName)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        String jsonText = resultSet.getString(columnName);</span><br><span class="line">        <span class="keyword">return</span> readToObject(jsonText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取可以为null的结果集</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resultSet   结果集</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> columnIndex columnIndex 列标</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getNullableResult</span><span class="params">(ResultSet resultSet, <span class="keyword">int</span> columnIndex)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        String jsonText = resultSet.getString(columnIndex);</span><br><span class="line">        <span class="keyword">return</span> readToObject(jsonText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取可以为null的结果集</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> callableStatement CallableStatement</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> columnIndex       列号</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getNullableResult</span><span class="params">(CallableStatement callableStatement, <span class="keyword">int</span> columnIndex)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        String jsonText = callableStatement.getString(columnIndex);</span><br><span class="line">        <span class="keyword">return</span> readToObject(jsonText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> T <span class="title">readToObject</span><span class="params">(String jsonText)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isEmpty(jsonText)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            T list = objectMapper.readValue(jsonText, type);</span><br><span class="line">            <span class="keyword">return</span>  list;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            logger.error(<span class="string">"字符串反序列化失败字符串为&#123;&#125;"</span>,jsonText,e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1916,7 +1927,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1927,7 +1938,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1938,7 +1949,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
