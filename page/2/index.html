@@ -253,6 +253,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/类加载机制/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ascetic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ascetic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/01/类加载机制/" itemprop="url">类加载机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T15:08:48+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><img src="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLSZDpyjFpYZApqrLA2agJUMoUjgruCNUlTPSLY_sptlMjrJZvQgU5-iRt-_fUThUzdH9Ev3nOldYP_CcQ0ALFEsO-tHvzzEUQTOA0000">
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p>查找并加载类的二进制数据。在该阶段虚拟机需要完成3件事情:</p>
+<p>1.​通过一个类的全限定名来获取类定义此类的二进制流。</p>
+<p>2.​将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</p>
+<p>3.​在内存(堆区)中生成一个代表这个类的java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。</p>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>连接是将已经读入内存的类的二进制数据合并到虚拟机的运行时环境中去。</p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>​确保被加载的类的正确性。验证过程主要分为4个阶段分别为：文件格式校验、元数据校验，字节码校验、符号引用验证。</p>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>​为类的静态变量分配内存，并将赋予默认值，例如:该阶段value的初始值为0，该阶段为value赋值为0，而不是123。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> value=<span class="number">123</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>​解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。该阶段可能发生在初始化之前也可能发生在初始化阶段之后。</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>​为类的静态变量赋予正确的初始值。如上例子中:该阶段才完成value赋值为123。</p>
+<p>类初始化时机有且只有以下五种情况:</p>
+<p>1.遇到new (新建对象时),getstatic(读取静态变量时),putstatic(写一个的静态变量)或invokestatic(调用静态方法时)这4条字节码指令时。</p>
+<p>2.使用java.lang.reflect 包的方法对类进行反射调用的时候。</p>
+<p>3.当初始化一个类的时候，如果发现父类还没有初始化，则先需要先触发器父类的初始化。</p>
+<p>4.当虚拟机启动时，用户需要制定一个执行的主类(main 方法所在类)，虚拟机会先初始化这个类。</p>
+<p>5、动态语言支持中,如果一个java.lang.invoke.MethodHandler实例返回的戒指结果REF_getStatic、REF_putStatic、REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需要先触发其初始化。</p>
+<h2 id="类加载器的分类"><a href="#类加载器的分类" class="headerlink" title="类加载器的分类"></a>类加载器的分类</h2><p>从Java虚拟机的角度来讲，只存在两种不同的类加载器: 一种是启动类加载器，这个类加载器使用C++语言实现，是虚拟机的一部分；另一种就是所有的其他的类加载器，这些类加载器都由Java语言实现，独立于虚拟机外部，并且全部都技能自抽象类java.lang,ClassLoader。</p>
+<h3 id="java虚拟机自带的加载器"><a href="#java虚拟机自带的加载器" class="headerlink" title="java虚拟机自带的加载器"></a>java虚拟机自带的加载器</h3><h4 id="启动类加载器（Bootstrap）"><a href="#启动类加载器（Bootstrap）" class="headerlink" title="启动类加载器（Bootstrap）"></a>启动类加载器（Bootstrap）</h4><p>这个加载器负责将&lt;JAVA_HOMT&gt;\lib 目录中的，或者被-Xbootclasspath参数所指定的路径中的并且是虚拟机识别的类库加载到虚拟机内存中。程序员无法再java代码中获取该类。</p>
+<h4 id="扩展类加载器（Extension）"><a href="#扩展类加载器（Extension）" class="headerlink" title="扩展类加载器（Extension）"></a>扩展类加载器（Extension）</h4><p>j这个加载器由sun.misc.Launcher$ExtClassLoader实现，负责加载&lt;JAVA_HOME&gt;\lib\ext 目录中的，或者被java.ext.dirs系统变量所指定的路径中的所有类库,开发者可以直接使用扩展类加载器</p>
+<h4 id="应用加载器（System）"><a href="#应用加载器（System）" class="headerlink" title="应用加载器（System）"></a>应用加载器（System）</h4><p>这个加载器有sun.misc.Launcher$App-ClassLoader实现。由于该类加载器是ClassLoader中的getSystemClassLoader()方法的返回值，所以一般也成为系统类加载器。它负责加载用户类路径(ClassPath)上所指定的类库。所以开发者可以直接使用这个类加载器，如果应用程序中没有自定义自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
+<h3 id="用户自定义的类加载器"><a href="#用户自定义的类加载器" class="headerlink" title="用户自定义的类加载器"></a>用户自定义的类加载器</h3><p>用户自定义类加载器，必须是java.lang.ClassLoader的子类，可以定义类的加载行为。</p>
+<h2 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h2><img src="http://www.plantuml.com/plantuml/svg/AyxEp2j8B4hCLSZDpyjFpYZApqrLA2agJUNIU3fX_TEk5SytxdxQjU35thrFPww8oNFApoyfBaaiK73EIImkzibFJ4ajqhJHrTLurhdowSQfg8fTAqfIyuepy_DGL7EHe1PayjDTKvvFMV5yHVVJNVseUXmB2d8oanDBC6qWNG_8fXVjgvwkc_LaPoUo5iEOlD3Yr2A8uXmQM624nG80">
+<p>双亲委派模型要求除了顶层的启动类加载外，其余的类加载器都应当有自己的父类加载器，这里类加载器的父子关系一般不会以继承(Inheritance)的关系来实现，而是都使用组合(Cpmposition)关系来复用附加在其的代码 。</p>
+<h3 id="双亲委派模型的工作过程"><a href="#双亲委派模型的工作过程" class="headerlink" title="双亲委派模型的工作过程"></a>双亲委派模型的工作过程</h3><p>如果一个类加载器收到类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成，每一个层次都是如此，因此所有的加载请求最终都应该传送到顶层的启动类加载器中，只有当父类加载器反馈自己无法完成这个请求时，子加载器才会去尝试自己去加载。双亲委派模型的好处是：<strong>能够有效确保一个类的全局唯一性</strong>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/25/多线程-基本概念/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -745,7 +911,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -767,7 +933,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
