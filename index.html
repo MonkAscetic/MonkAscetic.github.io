@@ -253,6 +253,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/04/15/DDD与微服务以及中台的关系/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ascetic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ascetic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/04/15/DDD与微服务以及中台的关系/" itemprop="url">怎么用DDD</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-04-15T17:05:36+08:00">
+                2022-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/DDD/" itemprop="url" rel="index">
+                    <span itemprop="name">DDD</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="微服务的困境"><a href="#微服务的困境" class="headerlink" title="微服务的困境"></a>微服务的困境</h2><p>服务拆分困境产生的根本原因就是不知道业务或者微服务的边界到底在什么地方，换句话说，确定了业务边界和应用边界，这个困境也就迎刃而解了</p>
+<h2 id="DDD是什么"><a href="#DDD是什么" class="headerlink" title="DDD是什么"></a>DDD是什么</h2><p>DDD 是一种处理高度复杂领域的设计思想，它试图分离技术实现的复杂性，并围绕业务概念构建领域模型来控制业务的复杂性，以解决软件难以理解，难以演进的问题。DDD 不是架构，而是一种架构设计方法论，它通过边界划分将复杂业务领域简单化，帮我们设计出清晰的领域和应用边界，可以很容易地实现架构演进。</p>
+<h2 id="DDD核心思想"><a href="#DDD核心思想" class="headerlink" title="DDD核心思想"></a>DDD核心思想</h2><p>DDD 核心思想是通过领域驱动设计方法定义领域模型，从而确定业务和应用边界，保证业务模型与代码模型的一致性。</p>
+<h2 id="DDD怎么用"><a href="#DDD怎么用" class="headerlink" title="DDD怎么用"></a>DDD怎么用</h2><p>1.弄清楚DDD与中微服务和中台的关系<br>中台本质是业务模型，微服务是业务模型的系统落地，DDD是一种设计思想，它可以同时指导中台业务建模和微服务设计，它们之间就是这样的一个铁三角关系。DDD 强调领域模型和微服务设计的一体性，先有领域模型然后才有微服务，而不是脱离领域模型来谈微服务设计。<br>2.通过战略设计，建立领域模型，划分微服务边界。<br>3.通过战术设计，我们会从领域模型转向微服务设计和落地</p>
+<p>目的: 建立边界清晰、可持续演进的微服务架构</p>
+<h2 id="DDD战略设计和战术设计"><a href="#DDD战略设计和战术设计" class="headerlink" title="DDD战略设计和战术设计"></a>DDD战略设计和战术设计</h2><p>战略设计主要从业务视角出发，建立业务领域模型，划分领域边界，建立通用语言的限界上下文，限界上下文可以作为微服务设计的参考边界。</p>
+<p>战术设计则从技术视角出发，侧重于领域模型的技术实现，完成软件开发和落地，包括：聚合根、实体、值对象、领域服务、应用服务和资源库等代码逻辑的设计和实现。</p>
+<p>DDD 战略设计会建立领域模型，领域模型可以用于指导微服务的设计和拆分。事件风暴是建立领域模型的主要方法，它是一个从发散到收敛的过程。它通常采用用例分析、场景分析和用户旅程分析，尽可能全面不遗漏地分解业务领域，并梳理领域对象之间的关系，这是一个发散的过程。事件风暴过程会产生很多的实体、命令、事件等领域对象，我们将这些领域对象从不同的维度进行聚类，形成如聚合、限界上下文等边界，建立领域模型，这就是一个收敛的过程。</p>
+<h2 id="如何划定领域模型与微服务的边界"><a href="#如何划定领域模型与微服务的边界" class="headerlink" title="如何划定领域模型与微服务的边界"></a>如何划定领域模型与微服务的边界</h2><p>第一步：在事件风暴中梳理业务过程中的用户操作、事件以及外部依赖关系等，根据这些要素梳理出领域实体等领域对象。<br>第二步：根据领域实体之间的业务关联性，将业务紧密相关的实体进行组合形成聚合，同时确定聚合中的聚合根、值对象和实体。在这个图里，聚合之间的边界是第一层边界，它们在同一个微服务实例中运行，这个边界是逻辑边界，所以用虚线表示。<br>第三步：根据业务及语义边界等因素，将一个或者多个聚合划定在一个限界上下文内，形成领域模型。在这个图里，限界上下文之间的边界是第二层边界，这一层边界可能就是未来微服务的边界，不同限界上下文内的领域逻辑被隔离在不同的微服务实例中运行，物理上相互隔离，所以是物理边界，边界之间用实线来表示。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/04/15/chapterReader/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -930,6 +1080,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/redis数据同步机制/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ascetic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ascetic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/redis数据同步机制/" itemprop="url">redis数据同步机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T14:06:07+08:00">
+                2019-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Redis-全量同步"><a href="#Redis-全量同步" class="headerlink" title="Redis 全量同步"></a>Redis 全量同步</h2><p><strong>发生时机:</strong> slave刚启动初始化时同步</p>
+<ol>
+<li>slave向master发送SYNC指令，master收到SYNC指令之后将调用syncCommand()进行同步处理</li>
+<li>在syncCommand()将调用rdbSaveBackground启动一个备份进程进行数据同步，如果已经有一个备份进程在进行了，就不会在重新启动</li>
+<li>备份进程将执行函数rdbSave()完成将redis的全部数据保存到rdb文件</li>
+<li>在redis的时间事件函数serverCron（redis的时间处理函数是指它会定时被redis进行操作的函数）中，将对备份后的数据进行处理，在serverCron函数中将会检查备份进程是否已经执行完毕，如果备份进程已经完成备份，则调用函数backgroundSaveDoneHandler完成后续处理。</li>
+<li>在函数backgroundSaveDoneHandler中，首先更新master的各种状态，例如，备份成功还是失败，备份的时间等等。然后调用函数updateSlavesWaitingBgsave，将备份的rdb数据发送给等待的slave。</li>
+<li>在函数updateSlavesWaitingBgsave中，将遍历所有的等待此次备份的slave，将备份的rdb文件发送给每一个slave。另外，这里并不是立即就把数据发送过去，而是将为每个等待的slave注册写事件，并注册写事件的响应函数sendBulkToSlave，即当slave对应的socket能够发送数据时就调用函数sendBulkToSlave（），实际发送rdb文件的操作都在函数sendBulkToSlave中完成。</li>
+<li>sendBulkToSlave函数将把备份的rdb文件发送给slave。</li>
+</ol>
+<h2 id="Redis-局部同步"><a href="#Redis-局部同步" class="headerlink" title="Redis 局部同步"></a>Redis 局部同步</h2><p><strong>发生时机:</strong> redis发生修改时</p>
+<ol>
+<li>master接收到一条用户的操作后，将调用函数call函数来执行具体的操作函数，在该函数中首先通过proc执行操作函数，然后将判断操作是否需要扩散到各slave，如果需要则调用函数propagate（）来完成此操作</li>
+<li>propagate（）函数完成将一个操作记录到aof文件中或者扩散到其他slave中；在该函数中通过调用feedAppendOnlyFile将操作记录到aof中，通过调用replicationFeedSlaves（）将操作扩散到各slave中。</li>
+<li>函数replicationFeedSlaves主要将操作扩散到每一个slave中；在该函数中将遍历自己下面挂的每一个slave，以此对每个slave进行如下两步的处理：将slave的数据库切换到本操作所对应的数据库（如果slave的数据库id与当前操作的数据id不一致时才进行此操作）；将命令和参数按照redis的协议格式写入到slave的缓存中。写入切换数据库的命令时将调用addReply，写入命令和参数时将调用addReplyMultiBulkLen和addReplyBulk，函数addReplyMultiBulkLen和addReplyBulk最终也将调用函数addReply</li>
+<li>在函数addReply中将调用prepareClientToWrite（）设置slave的socket写入事件处理函数sendReplyToClient（通过函数aeCreateFileEvent进行设置），这样一旦slave对应的socket发送缓存中有空间写入数据，即调用sendReplyToClient进行处</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/垃圾收集器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1054,164 +1362,6 @@
 <li>分代收集</li>
 <li>空间整合 从整体上看基于标记整理，局部为复制算法。</li>
 <li>可预测的停顿时间。</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/redis数据同步机制/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ascetic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ascetic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/16/redis数据同步机制/" itemprop="url">redis数据同步机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T14:06:07+08:00">
-                2019-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/多线程/" itemprop="url" rel="index">
-                    <span itemprop="name">多线程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Redis-全量同步"><a href="#Redis-全量同步" class="headerlink" title="Redis 全量同步"></a>Redis 全量同步</h2><p><strong>发生时机:</strong> slave刚启动初始化时同步</p>
-<ol>
-<li>slave向master发送SYNC指令，master收到SYNC指令之后将调用syncCommand()进行同步处理</li>
-<li>在syncCommand()将调用rdbSaveBackground启动一个备份进程进行数据同步，如果已经有一个备份进程在进行了，就不会在重新启动</li>
-<li>备份进程将执行函数rdbSave()完成将redis的全部数据保存到rdb文件</li>
-<li>在redis的时间事件函数serverCron（redis的时间处理函数是指它会定时被redis进行操作的函数）中，将对备份后的数据进行处理，在serverCron函数中将会检查备份进程是否已经执行完毕，如果备份进程已经完成备份，则调用函数backgroundSaveDoneHandler完成后续处理。</li>
-<li>在函数backgroundSaveDoneHandler中，首先更新master的各种状态，例如，备份成功还是失败，备份的时间等等。然后调用函数updateSlavesWaitingBgsave，将备份的rdb数据发送给等待的slave。</li>
-<li>在函数updateSlavesWaitingBgsave中，将遍历所有的等待此次备份的slave，将备份的rdb文件发送给每一个slave。另外，这里并不是立即就把数据发送过去，而是将为每个等待的slave注册写事件，并注册写事件的响应函数sendBulkToSlave，即当slave对应的socket能够发送数据时就调用函数sendBulkToSlave（），实际发送rdb文件的操作都在函数sendBulkToSlave中完成。</li>
-<li>sendBulkToSlave函数将把备份的rdb文件发送给slave。</li>
-</ol>
-<h2 id="Redis-局部同步"><a href="#Redis-局部同步" class="headerlink" title="Redis 局部同步"></a>Redis 局部同步</h2><p><strong>发生时机:</strong> redis发生修改时</p>
-<ol>
-<li>master接收到一条用户的操作后，将调用函数call函数来执行具体的操作函数，在该函数中首先通过proc执行操作函数，然后将判断操作是否需要扩散到各slave，如果需要则调用函数propagate（）来完成此操作</li>
-<li>propagate（）函数完成将一个操作记录到aof文件中或者扩散到其他slave中；在该函数中通过调用feedAppendOnlyFile将操作记录到aof中，通过调用replicationFeedSlaves（）将操作扩散到各slave中。</li>
-<li>函数replicationFeedSlaves主要将操作扩散到每一个slave中；在该函数中将遍历自己下面挂的每一个slave，以此对每个slave进行如下两步的处理：将slave的数据库切换到本操作所对应的数据库（如果slave的数据库id与当前操作的数据id不一致时才进行此操作）；将命令和参数按照redis的协议格式写入到slave的缓存中。写入切换数据库的命令时将调用addReply，写入命令和参数时将调用addReplyMultiBulkLen和addReplyBulk，函数addReplyMultiBulkLen和addReplyBulk最终也将调用函数addReply</li>
-<li>在函数addReply中将调用prepareClientToWrite（）设置slave的socket写入事件处理函数sendReplyToClient（通过函数aeCreateFileEvent进行设置），这样一旦slave对应的socket发送缓存中有空间写入数据，即调用sendReplyToClient进行处</li>
 </ol>
 
           
@@ -1715,168 +1865,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/25/多线程-基本概念/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ascetic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ascetic">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/25/多线程-基本概念/" itemprop="url">多线程-基本概念</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-25T11:18:24+08:00">
-                2019-01-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/多线程/" itemprop="url" rel="index">
-                    <span itemprop="name">多线程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>多线程</p>
-<h2 id="重入"><a href="#重入" class="headerlink" title="重入"></a>重入</h2><p>当某个线程请求一个由其他线程获取持有的锁时，该线程就会阻塞。然而，由于synchronized是可重入的，因此如果某个锁线程获取一个已经由它自己持有的锁时，这个请求就会成功。重入意味着获取锁的粒度是线程而不是调用。</p>
-<p>重入的一种方法是，给锁关联一个计数器和一个持有者线程。当计数器为0时说明该线程未被线程持有。当线程请求一个未持有的锁时，JVM将记下锁的持有者并且将计数值设置为1，如果同一线程再次访问时将计数器加1，当同一线程退出同步代码块时，计数器减1，当技术器为0时，该锁将被释放。</p>
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>当变量被声明为volatile类型后，编译器与运行时都会注意到这个变量是共享的，因此不会将该变量上的操作与其他内存操作一起重排序。volatile变量不会被缓存在寄存器或者对其他处理器不可见的地方,因此在读取volatile类型的变量时总会返回最新写入的值。</p>
-<h2 id="synchronized实现原理"><a href="#synchronized实现原理" class="headerlink" title="synchronized实现原理"></a>synchronized实现原理</h2><p>synchronized 同步语句块使用的是monitorenter和monitorexit指令，其中monitorenter指令指向同步代码块的开始位置，monitorexit指令则指明同步代码块的结束位置。<br>synchronized 修饰方法使用的是ACC_SYNCHRONIZED 标识</p>
-<h2 id="ReentrantLock实现原理"><a href="#ReentrantLock实现原理" class="headerlink" title="ReentrantLock实现原理"></a>ReentrantLock实现原理</h2><p>ReentrantLock 通过AbstractQueuedSynchronizer(即AQS)实现.用FIFO队列实现公平锁和非公平锁，在公平锁中，如果当另一个线程持有锁或者有其他线程在等待队列中这个锁，所以新发出的请求的线程将被放入到度一列中。而非公平锁，只有当锁被其他线程持有时，新发出请求的线程才会被放入队列中(此时和公平锁是一样的)。所以他们的差别是非公平锁会有更多的机会去抢占锁。</p>
-<h2 id="ReenTrantLock的对比"><a href="#ReenTrantLock的对比" class="headerlink" title="ReenTrantLock的对比"></a>ReenTrantLock的对比</h2><p>1、两者都是可重入锁</p>
-<p>2、synchronized依赖于JVM而ReenTrantLock依赖于API</p>
-<p>3、ReenTrantLock比synchronized增加了一些高级功能主要有:<strong>等待可中断</strong>、<strong>可实现公平锁</strong>、<strong>可实现选择性通知</strong></p>
-<ol>
-<li><strong>ReenTrantLock提供了一种能够中断等待锁的线程机制</strong>，通过lock.lockInterruptibly()来实现这个机制。</li>
-<li><strong>ReenTrantLock 可以指定公平锁和非公平锁,而synchronized只能是非公平锁</strong>。所谓的公平锁就是先等待的线程先获得锁。ReenTrantLock默认情况是公平的。</li>
-<li><strong>synchronized关键字与wait()和notify/notifyAll()方法相结合可以实现等待/通知机制，ReentrantLock类当然也可以实现，但是需要借助于Condition接口与newCondition() 方法。Condition是JDK1.5之后才有的，它具有很好的灵活性，比如可以实现多路通知功能也就是在一个Lock对象中可以创建多个Condition实例（即对象监视器），线程对象可以注册在指定的Condition中，从而可以有选择性的进行线程通知，在调度线程上更加灵活。 在使用notify/notifyAll()方法进行通知时，被通知的线程是由 JVM 选择的，用ReentrantLock类结合Condition实例可以实现“选择性通知”。</strong></li>
-</ol>
-<h2 id="AQS实现原理"><a href="#AQS实现原理" class="headerlink" title="AQS实现原理"></a>AQS实现原理</h2><p>AQS核心思想是，如果请求的共享资源空闲，则将当前请求资源的线程设置为有效的工作线程，并且将共享资源设置为锁定状态。如果被请求的共享资源占用，那么需要一套线程阻塞等待以及被唤醒时锁分配的机制，这个机制是AQS是用CLH(FIFO双向队列)队列锁实现的，即将暂时获取不到的线程加入到队列中。</p>
-<h2 id="AQS定义两种资源共享方式"><a href="#AQS定义两种资源共享方式" class="headerlink" title="AQS定义两种资源共享方式"></a>AQS定义两种资源共享方式</h2><p>Exclusive(独占)；只有一个线程能执行如ReentrantLock.又可分为公平锁和非公平锁:</p>
-<ol>
-<li>按照线程在队列中的排队顺序，先到者先拿到锁 </li>
-<li>当线程要获取锁时，无视队列顺序直接去抢锁，谁抢到就是谁的<br>Share（共享）：多个线程可同时执行，如Semaphore/CountDownLatch。Semaphore、CountDownLatch、 CyclicBarrier、ReadWriteLock。</li>
-</ol>
-<h3 id="AQS使用了模板方法模式，自定义同步器时需要重写下面几个AQS提供的模板方法："><a href="#AQS使用了模板方法模式，自定义同步器时需要重写下面几个AQS提供的模板方法：" class="headerlink" title="AQS使用了模板方法模式，自定义同步器时需要重写下面几个AQS提供的模板方法："></a>AQS使用了模板方法模式，自定义同步器时需要重写下面几个AQS提供的模板方法：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isHeldExclusively()<span class="comment">//该线程是否正在独占资源。只有用到condition才需要去实现它。</span></span><br><span class="line">tryAcquire(<span class="keyword">int</span>)<span class="comment">//独占方式。尝试获取资源，成功则返回true，失败则返回false。</span></span><br><span class="line">tryRelease(<span class="keyword">int</span>)<span class="comment">//独占方式。尝试释放资源，成功则返回true，失败则返回false。</span></span><br><span class="line">tryAcquireShared(<span class="keyword">int</span>)<span class="comment">//共享方式。尝试获取资源。负数表示失败；0表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。</span></span><br><span class="line">tryReleaseShared(<span class="keyword">int</span>)<span class="comment">//共享方式。尝试释放资源，成功则返回true，失败则返回false。</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1927,7 +1915,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1938,7 +1926,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1949,7 +1937,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1986,7 +1974,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -2167,6 +2155,13 @@
   
 
   
+
+
+  <!-- 音频播放 -->
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
 
 </body>
 </html>
